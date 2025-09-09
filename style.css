@@ -1,0 +1,102 @@
+/* Reset & body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #001f3f;
+    padding: 15px 40px;
+    color: white;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+.navbar .logo {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 40px;
+    flex-wrap: wrap;
+    background-color: white;
+}
+.hero-text {
+    flex: 1 1 50%;
+}
+.hero-text h1 {
+    font-size: 36px;
+    margin: 20px 0;
+}
+.hero-text p.desc {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    max-width: 500px;
+}
+.highlight-pink {
+    color: #e91e63;
+}
+.highlight-blue {
+    color: #005b96;
+}
+.buttons {
+    margin-top: 20px;
+}
+.btn-outline, .btn-filled {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+    display: inline-block;
+}
+.btn-outline {
+    border: 2px solid #005b96;
+    color: #005b96;
+    background: none;
+}
+.btn-outline:hover {
+    background-color: #005b96;
+    color: white;
+}
+.btn-filled {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+}
+.btn-filled:hover {
+    background-color: #c2185b;
+}
+
+/* Hero Image */
+.hero-image {
+    flex: 1 1 40%;
+    text-align: center;
+}
+.hero-image img {
+    width: 300px;
+    border-radius: 10px;
+}

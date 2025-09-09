@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biodata Diri - Portofolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+
+   /* === NAVBAR OVAL === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fddde6; /* Warna pink pastel */
+  padding: 15px 40px;
+  color: #333; /* Warna teks gelap agar kontras */
+  border-radius: 50px;
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+.navbar .logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #c2185b; /* Warna pink tua untuk logo agar matching */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li a {
+  color: #c2185b; /* Warna teks menu: pink tua */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+
+    /* === HERO SECTION === */
+    .hero,
+    .about-me,
+    .contact {
+      padding: 60px 40px;
+      min-height: 80vh;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fddde6; /* Warna pink pastel */
+      max-width: 1100px;
+      margin: 20px auto;
+      border-radius: 15px;
+    }
+
+    .hero.active,
+    .about-me.active,
+    .contact.active {
+      display: flex;
+    }
+
+    .hero-text,
+    .about-content,
+    .contact-content {
+      flex: 1 1 50%;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .desc {
+      font-size: 16px;
+      max-width: 500px;
+      margin-bottom: 25px;
+    }
+
+    .highlight-pink {
+      color: #e91e63;
+    }
+
+    .highlight-blue {
+      color: #005b96;
+    }
+
+    .buttons a,
+    .buttons button {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-right: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: inline-block;
+      border: none;
+    }
+
+    .btn-outline {
+      border: 2px solid #005b96;
+      color: #005b96;
+      background: none;
+    }
+
+    .btn-outline:hover {
+      background-color: #005b96;
+      color: white;
+    }
+
+    .btn-filled {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+    }
+
+    .btn-filled:hover {
+      background-color: #c2185b;
+    }
+
+    .hero-image img,
+    .about-img img,
+    .contact-content img {
+      max-width: 320px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* === ABOUT ME SECTION === */
+    .about-me {
+      flex-wrap: wrap;
+    }
+
+    .about-container {
+      display: flex;
+      gap: 30px;
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .about-img {
+      flex: 0 0 320px;
+    }
+
+    .about-content {
+      flex: 1;
+    }
+
+    .about-content h2 {
+      color: #c2185b;
+      margin-bottom: 15px;
+    }
+
+    .about-content p {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* === TABS === */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .tablink {
+      padding: 8px 16px;
+      border: none;
+      background-color: white;
+      color: #c2185b;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tablink:hover,
+    .tablink.active {
+      background-color: #c2185b;
+      color: white;
+    }
+
+    .tabcontent {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .tabcontent.active {
+      display: block;
+    }
+
+    /* === CONTACT SECTION === */
+    .contact-content {
+      flex: 1 1 100%;
+      max-width: 500px;
+    }
+
+    .contact-content h2 {
+      color: #c2185b;
+      margin-bottom: 15px;
+    }
+
+    .contact-content form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-content label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .contact-content input,
+    .contact-content textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      font-size: 16px;
+    }
+
+    .contact-content textarea {
+      min-height: 100px;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero,
+      .about-me,
+      .contact {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text,
+      .about-content,
+      .contact-content {
+        flex: 1 1 100%;
+      }
+
+      .about-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-img {
+        margin-bottom: 20px;
+      }
+
+      .navbar {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 10px;
+        border-radius: 20px;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- === NAVBAR OVAL === -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#about-me-section" id="nav-about">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="logo">2025</div>
+  </nav>
+
+  <!-- === HERO SECTION === -->
+  <section class="hero active" id="hero-section">
+    <div class="hero-text">
+      <p>Hello There!</p>
+      <h1>
+        Saya <span class="highlight-pink">Destria Angelyne</span><br />
+        <span class="highlight-blue">Siswi SMK Negeri 2 Surabaya</span>
+      </h1>
+      <p class="desc">
+        Saya adalah siswi SMK Negeri 2 Surabaya jurusan Rekayasa Perangkat Lunak. Saya memiliki ketertarikan dalam pengembangan website dan pemrograman. Saat ini saya sedang fokus mengembangkan skill di bidang back-end development.
+      </p>
+      <div class="buttons">
+        <button id="start-slide" class="btn-filled">Start Slide</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="foto.jpg" alt="Foto Profil" />
+    </div>
+  </section>
+
+  <!-- === ABOUT ME SECTION === -->
+  <section class="about-me" id="about-me-section">
+    <div class="about-container">
+      <div class="about-img">
+        <img src="foto.jpg" alt="Foto Tentang Saya" />
+      </div>
+      <div class="about-content">
+        <h2>About Me</h2>
+        <p>
+          Halo! Perkenalkan saya Destria Angelyne siswi SMK Negeri 2 Surabaya. Saya adalah pelajar SMK yang sedang menekuni dunia backend development. Saya sangat tertarik dengan bagaimana sistem dan aplikasi bisa bekerja di balik layar untuk memberikan pengalaman yang lancar bagi pengguna. Saya belajar berbagai bahasa pemrograman seperti Python dan JavaScript, serta memahami konsep server, database, dan API.
+        </p>
+
+        <div class="tabs">
+          <button class="tablink active" onclick="openTab(event, 'hobby')">Hobby</button>
+          <button class="tablink" onclick="openTab(event, 'education')">Education</button>
+        </div>
+
+        <div id="hobby" class="tabcontent active">
+          <h4>Membaca Novel</h4>
+          <p>Saya suka membaca novel karena cerita yang menarik dan karakter yang kuat dapat membawa saya ke dunia lain. Membaca novel juga membantu saya memperluas imajinasi dan wawasan, sekaligus menjadi sumber inspirasi dalam berkarya.</p>
+
+          <h4>Bermain Bulu Tangkis</h4>
+          <p>Bermain bulu tangkis adalah aktivitas favorit saya untuk menjaga kebugaran dan melepas penat. Selain itu, olahraga ini mengajarkan saya tentang strategi, disiplin, dan kerja sama, yang juga penting dalam kehidupan sehari-hari.</p>
+
+          <h4>Menggambar</h4>
+          <p>Menggambar adalah cara saya mengekspresikan ide dan perasaan secara visual. Aktivitas ini membantu saya mengasah kreativitas dan ketelitian, serta menjadi sarana untuk berkreasi dengan berbagai gaya dan konsep.</p>
+        </div>
+
+        <div id="education" class="tabcontent">
+          <p>SMKN 2 Surabaya - RPL (2024 - 2027)</p>
+          <p>SMP Negeri 20 Surabaya (2020 - 2023)</p>
+          <p>SD Negeri Manukan Kulon 2 Surabaya (2013 - 2019)</p>
+        </div>
+
+        <div class="buttons" style="margin-top: 20px;">
+          <button id="next-to-contact" class="btn-outline">Next Slide &raquo;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === CONTACT SECTION === -->
+  <section class="contact" id="contact-section">
+    <div class="contact-content">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Pesan:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit" class="btn-filled">Kirim</button>
+      </form>
+
+      <div class="buttons" style="margin-top: 20px;">
+        <button id="prev-to-about" class="btn-outline">&laquo; Previous Slide</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Fungsi untuk tab About Me
+    function openTab(evt, tabName) {
+      const tabcontent = document.querySelectorAll(".tabcontent");
+      const tablinks = document.querySelectorAll(".tablink");
+
+      tabcontent.forEach((tc) => tc.classList.remove("active"));
+      tablinks.forEach((tl) => tl.classList.remove("active"));
+
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
+    // Fungsi pindah slide
+    function showSlide(slideId) {
+      const slides = ['hero-section', 'about-me-section', 'contact-section'];
+      slides.forEach(id => {
+        document.getElementById(id).classList.remove('active');
+      });
+      document.getElementById(slideId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Start Slide button dari Hero ke About Me
+    document.getElementById("start-slide").addEventListener("click", function () {
+      showSlide('about-me-section');
+    });
+
+    // Navbar About link ke About Me
+    document.getElementById("nav-about").addEventListener("click", function (e) {
+      e.preventDefault();
+      showSlide('about-me-section');
+    });
+
+    // Next Slide dari About Me ke Contact
+    document.getElementById("next-to-contact").addEventListener("click", function () {
+      showSlide('contact-section');
+    });
+
+    // Previous Slide dari Contact ke About Me
+    document.getElementById("prev-to-about").addEventListener("click", function () {
+      showSlide('about-me-section');
+    });
+
+    // Submit form contact (hanya demo)
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Terima kasih sudah menghubungi saya!");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
